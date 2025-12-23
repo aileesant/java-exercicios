@@ -1,0 +1,141 @@
+import java.util.Scanner;
+
+public class SweetFly {
+    
+    static class Reserva {
+        int nr_aviao;
+        String passageiro;
+    }
+
+    static int[] aviao = new int[4];
+    static int[] assentos = new int[4];
+    static Reserva[] checkin = new Reserva[20];
+    static int indice_reserva;
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int opcao;
+
+        do {
+            System.out.println("--- SWEET FLY ---");
+            System.out.println(" MENU: ");
+            System.out.println("1: Registrar o número de cada avião.");
+            System.out.println("2: Registrar o quantitativo de assentos disponíveis em cada avião.");
+            System.out.println("3: Reservar passagem aérea.");
+            System.out.println("4: Realizar consulta por avião.");
+            System.out.println("5: Realizar consulta por passageiro.");
+            System.out.println("6: Encerrar.");
+            opcao = scanner.nextInt();
+            scanner.nextLine();  // Consumir a quebra de linha
+
+            switch (opcao) {
+                case 1:
+                    registrar_aviao(scanner);
+                    break;
+                case 2:
+                    registrar_assentos(scanner);
+                    break;
+                case 3:
+                    fazer_reserva(scanner);
+                    break;
+                case 4:
+                    consulta_aviao(scanner);
+                    break;
+                case 5:
+                    consulta_passageiro(scanner);
+                    break;
+            }
+
+        } while (opcao != 6);
+
+        System.out.println("Obrigado por utilizar o SWEET FLY!");
+        scanner.close();
+    }
+
+    static void registrar_aviao(Scanner scanner) {
+        System.out.println(" --- REGISTRO DE AVIÕES --- ");
+        for (int i = 0; i < 4; i++) {
+            System.out.println("Informe o nr do avião " + (i + 1));
+            aviao[i] = scanner.nextInt();
+        }
+        scanner.nextLine();  // Consumir a quebra de linha após o último número
+    }
+
+    static void registrar_assentos(Scanner scanner) {
+        System.out.println(" --- REGISTRO DE ASSENTOS --- ");
+        for (int i = 0; i < 4; i++) {
+            System.out.println("Informe a quantidade de assentos do aviao " + (i + 1));
+            assentos[i] = scanner.nextInt();
+        }
+        scanner.nextLine();  // Consumir a quebra de linha após o último número
+    }
+
+    static boolean verifica_aviao(int aviao_reserva) {
+        for (int i = 0; i < 4; i++) {
+            if (aviao[i] == aviao_reserva) {
+                indice_reserva = i;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    static boolean verifica_assentos(int aviao_reserva) {
+        if (assentos[indice_reserva] > 0) {
+            System.out.println("Avião tem " + assentos[indice_reserva] + " assentos disponíveis.");
+            assentos[indice_reserva]--;
+            return true;
+        }
+        return false;
+    }
+
+    static void fazer_reserva(Scanner scanner) {
+        System.out.println("--- RESERVAS ---");
+        System.out.println("Informe o nr do aviao para reserva");
+        int aviao_reserva = scanner.nextInt();
+        scanner.nextLine();  // Consumir a quebra de linha
+
+        if (verifica_aviao(aviao_reserva)) {
+            if (verifica_assentos(aviao_reserva)) {
+                System.out.println("Faz Reserva");
+                System.out.println("Informe o nome do passageiro: ");
+                String passageiro_reserva = scanner.nextLine();
+                checkin[indice_reserva] = new Reserva();
+                checkin[indice_reserva].nr_aviao = aviao_reserva;
+                checkin[indice_reserva].passageiro = passageiro_reserva;
+                System.out.println("Reserva realizada com sucesso!!");
+            } else {
+                System.out.println("Não existem mais assentos disponíveis!");
+            }
+        } else {
+            System.out.println("Avião não localizado.");
+        }
+    }
+
+    static void consulta_aviao(Scanner scanner) {
+        System.out.println("Digite o número do avião que deseja consultar: ");
+        int numeroAviao = scanner.nextInt();
+        scanner.nextLine();  // Consumir a quebra de linha
+        for (int i = 0; i < 4; i++) {
+            if (aviao[i] == numeroAviao) {
+                System.out.println("Avião encontrado: " + numeroAviao);
+                return;
+            }
+        }
+        System.out.println("Avião não encontrado.");
+    }
+
+    static void consulta_passageiro(Scanner scanner) {
+        System.out.println("Digite o nome do passageiro que deseja consultar: ");
+        String nomePassageiro = scanner.nextLine();
+        for (Reserva r : checkin) {
+            if (r != null && r.passageiro.equals(nomePassageiro)) {
+                System.out.println("Passageiro encontrado: " + nomePassageiro + " no avião " + r.nr_aviao);
+                return;
+            }
+        }
+        System.out.println("Passageiro não encontrado.");
+    }
+}
+
+//Commits on May 24, 2024
