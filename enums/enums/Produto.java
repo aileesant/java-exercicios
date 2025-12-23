@@ -1,0 +1,37 @@
+package org.example.enums;
+
+public class Produto {
+    private String nome;
+    private Pedido pedido; //pedido é enum e vai estar dentro da classe
+
+    public Produto(String nome, Pedido pedido) {
+        this.nome = nome;
+        this.pedido = pedido;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "nome='" + nome + '\'' +
+                ", pedido=" + pedido +
+                '}';
+    }
+}
+
+//Commits on Sep 6, 2025
