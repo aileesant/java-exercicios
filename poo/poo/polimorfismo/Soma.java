@@ -6,3 +6,5 @@ public class Soma implements OperacaoMatematica {
         return a+b;
     }
 }
+
+//Commits on Sep 13, 2025
