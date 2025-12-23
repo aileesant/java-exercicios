@@ -5,3 +5,5 @@ public interface OperacaoMatematica {
     // odo metodo é por padrao public abstrat, então seria reduntante
     double calcular(double a, double b);
 }
+
+//Commits on Sep 13, 2025
