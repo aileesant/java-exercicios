@@ -1,0 +1,22 @@
+Crie um novo projeto Java:
+
+Abra o Eclipse.
+Vá para File > New > Java Project.
+Digite o nome do projeto, por exemplo, SweetFlyProject, e clique em Finish.
+Crie uma nova classe Java:
+
+Clique com o botão direito no projeto recém-criado no Package Explorer (geralmente à esquerda).
+Selecione New > Class.
+Digite SweetFly como o nome da classe.
+Marque a caixa de seleção public static void main(String[] args) para incluir o método main automaticamente.
+Clique em Finish.
+Copie e cole o código:
+
+Apague qualquer código gerado automaticamente no arquivo SweetFly.java.
+Copie e cole o código fornecido acima no arquivo SweetFly.java.
+Execute o programa:
+
+Salve o arquivo.
+Clique com o botão direito no arquivo SweetFly.java no Package Explorer.
+Selecione Run As > Java Application.
+Agora, o programa deve funcionar conforme o esperado, permitindo que você registre aviões, assentos, faça reservas e consultas.
